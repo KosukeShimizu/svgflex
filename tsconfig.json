@@ -23,7 +23,7 @@
     ],
     "paths": {
       "@svgflex/core": [
-        "./packages/core/src/index.ts"
+        "./packages/core/dist"
       ],
       "@svgflex/angular": [
         "./packages/angular/src/public-api.ts"

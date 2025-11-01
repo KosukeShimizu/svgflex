@@ -26,7 +26,7 @@ import { processSvgConfig, SvgFlexConfig, SvgSize, SvgColor } from '@svgflex/cor
   standalone: true,
   imports: [CommonModule],
   templateUrl: './svgflex.component.html',
-  styleUrls: ['./svgflex.component.scss']
+  styleUrl: './svgflex.component.scss'
 })
 export class SvgflexComponent implements OnChanges {
   private svgLoader = inject(SvgLoaderService);

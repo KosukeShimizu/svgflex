@@ -10,10 +10,7 @@
       "prefix": "svgflex",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "packages/angular/ng-package.json"
-          },
+          "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
               "tsConfig": "packages/angular/tsconfig.lib.prod.json"

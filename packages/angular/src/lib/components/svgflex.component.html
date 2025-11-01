@@ -1,0 +1,19 @@
+<div
+  class="svgflex-container"
+  [style.color]="processedColor"
+  [attr.aria-label]="ariaLabel"
+  [attr.role]="ariaLabel ? 'img' : null"
+>
+  @if (inline && svgContent) {
+    <div [innerHTML]="svgContent" class="svgflex-inline"></div>
+  } @else if (!inline) {
+    <img
+      [src]="src"
+      [alt]="ariaLabel || ''"
+      [style.width]="width"
+      [style.height]="height"
+    />
+  } @else {
+    <div class="svgflex-loading"></div>
+  }
+</div>

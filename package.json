@@ -1,0 +1,53 @@
+{
+  "name": "@svgflex/workspace",
+  "version": "0.0.1",
+  "description": "SVG icons with easy color and size customization",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve demo",
+    "build": "npm run build:core && npm run build:angular",
+    "build:core": "cd packages/core && npm run build",
+    "build:angular": "ng build angular",
+    "build:demo": "ng build demo",
+    "build:all": "npm run build && npm run build:demo",
+    "watch": "ng build angular --watch",
+    "watch:core": "cd packages/core && npm run watch",
+    "test": "ng test angular",
+    "prepublish": "npm run build"
+  },
+  "private": true,
+  "keywords": [
+    "svg",
+    "icons",
+    "angular",
+    "currentColor",
+    "customizable"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "^20.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/platform-browser-dynamic": "^20.0.0",
+    "rxjs": "^7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^20.0.0",
+    "@angular/cli": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^20.0.0",
+    "typescript": "~5.8.0"
+  }
+}

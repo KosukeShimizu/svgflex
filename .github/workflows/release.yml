@@ -68,13 +68,7 @@ jobs:
       - name: Publish @svgflex/core
         if: github.event.inputs.package == 'all' || github.event.inputs.package == 'core' || github.ref_type == 'tag'
         working-directory: ./packages/core
-        run: |
-          if [ -d "dist" ]; then
-            cd dist
-            npm publish --provenance --access public
-          else
-            npm publish --provenance --access public
-          fi
+        run: npm publish dist --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

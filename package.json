@@ -7,7 +7,7 @@
     "start": "ng serve demo",
     "build": "npm run build:core && npm run build:angular",
     "build:core": "cd packages/core && npm run build",
-    "build:angular": "ng build angular",
+    "build:angular": "ng build angular && cp LICENSE dist/angular/",
     "build:demo": "ng build demo",
     "build:all": "npm run build && npm run build:demo",
     "watch": "ng build angular --watch",

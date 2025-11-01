@@ -1,6 +1,6 @@
 {
   "name": "@svgflex/angular",
-  "version": "0.0.1",
+  "version": "0.0.0-dev",
   "description": "Angular library for SVG icons with easy color and size customization",
   "keywords": [
     "svg",
@@ -28,7 +28,7 @@
   "peerDependencies": {
     "@angular/common": "^20.0.0",
     "@angular/core": "^20.0.0",
-    "@svgflex/core": "^0.0.1"
+    "@svgflex/core": "*"
   },
   "dependencies": {
     "tslib": "^2.3.0"

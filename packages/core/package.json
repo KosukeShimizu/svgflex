@@ -1,12 +1,12 @@
 {
   "name": "@svgflex/core",
-  "version": "0.0.1",
+  "version": "0.0.0-dev",
   "description": "Framework-agnostic core utilities for SVGFlex",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp README.md ../../LICENSE dist/",
     "watch": "tsc --watch"
   },
   "keywords": [

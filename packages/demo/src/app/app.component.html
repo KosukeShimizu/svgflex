@@ -1,0 +1,248 @@
+<div class="header">
+  <h1>SVGFlex Demo</h1>
+  <p>Easy SVG icons with customizable color and size</p>
+</div>
+
+<section>
+  <h2>Size Examples</h2>
+  <div class="demo-grid">
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/heart.svg" [size]="16"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Small (16px)</h4>
+        <code>[size]="16"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/heart.svg" [size]="24"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Medium (24px)</h4>
+        <code>[size]="24"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/heart.svg" [size]="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Large (32px)</h4>
+        <code>[size]="32"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/heart.svg" [size]="48"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Extra Large (48px)</h4>
+        <code>[size]="48"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/heart.svg" [size]="64"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>2X Large (64px)</h4>
+        <code>[size]="64"</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Color Examples (using currentColor)</h2>
+  <div class="demo-grid">
+    <div class="demo-item text-red">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" size="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Red</h4>
+        <code>class="text-red"</code>
+      </div>
+    </div>
+
+    <div class="demo-item text-blue">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" size="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Blue</h4>
+        <code>class="text-blue"</code>
+      </div>
+    </div>
+
+    <div class="demo-item text-green">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" size="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Green</h4>
+        <code>class="text-green"</code>
+      </div>
+    </div>
+
+    <div class="demo-item text-purple">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" size="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Purple</h4>
+        <code>class="text-purple"</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Direct Color Examples</h2>
+  <div class="demo-grid">
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/home.svg" color="#ff0000" size="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Hex Color</h4>
+        <code>color="#ff0000"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/home.svg" color="rgb(33, 150, 243)" size="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>RGB Color</h4>
+        <code>color="rgb(33, 150, 243)"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/home.svg" color="hsl(120, 50%, 50%)" size="32"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>HSL Color</h4>
+        <code>color="hsl(120, 50%, 50%)"</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Size with Units</h2>
+  <div class="demo-grid">
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/user.svg" size="2rem"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>REM Units</h4>
+        <code>size="2rem"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/user.svg" size="3em"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>EM Units</h4>
+        <code>size="3em"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/user.svg" [size]="{width: '64px', height: '32px'}"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>Custom Width/Height</h4>
+        <code>[size]="&#123;...&#125;"</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>CSS Class Examples</h2>
+  <div class="demo-grid">
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" class="icon-sm"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>icon-sm (16px)</h4>
+        <code>class="icon-sm"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" class="icon-md"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>icon-md (24px)</h4>
+        <code>class="icon-md"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" class="icon-lg"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>icon-lg (32px)</h4>
+        <code>class="icon-lg"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" class="icon-xl"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>icon-xl (48px)</h4>
+        <code>class="icon-xl"</code>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex src="assets/icons/star.svg" class="icon-2xl"></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>icon-2xl (64px)</h4>
+        <code>class="icon-2xl"</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Accessibility</h2>
+  <div class="demo-grid">
+    <div class="demo-item">
+      <div class="demo-item-icon">
+        <svgflex
+          src="assets/icons/close.svg"
+          size="32"
+          ariaLabel="Close dialog"
+        ></svgflex>
+      </div>
+      <div class="demo-item-info">
+        <h4>With ARIA Label</h4>
+        <code>ariaLabel="..."</code>
+      </div>
+    </div>
+  </div>
+</section>

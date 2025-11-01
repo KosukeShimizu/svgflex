@@ -1,0 +1,27 @@
+<div class="header">
+  <h1>SVGFlex Demo</h1>
+  <p>Easy SVG icons with customizable color and size</p>
+</div>
+
+<section>
+  <h2>Test - Basic SVG</h2>
+  <p>If you see a heart icon below, the component is working:</p>
+
+  <!-- Test 1: Basic usage -->
+  <div style="border: 2px solid red; padding: 20px; margin: 20px;">
+    <p>Test 1: Basic svgflex component</p>
+    <svgflex src="assets/icons/heart.svg"></svgflex>
+  </div>
+
+  <!-- Test 2: With explicit inline=false -->
+  <div style="border: 2px solid blue; padding: 20px; margin: 20px;">
+    <p>Test 2: With inline=false (using img tag)</p>
+    <svgflex src="assets/icons/heart.svg" [inline]="false"></svgflex>
+  </div>
+
+  <!-- Test 3: Direct img tag -->
+  <div style="border: 2px solid green; padding: 20px; margin: 20px;">
+    <p>Test 3: Direct img tag (control)</p>
+    <img src="assets/icons/heart.svg" width="24" height="24" />
+  </div>
+</section>

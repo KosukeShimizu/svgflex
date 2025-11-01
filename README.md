@@ -164,4 +164,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📮 Support
 
-If you have any questions or issues, please [open an issue](https://github.com/yourusername/svgflex/issues).
+If you have any questions or issues, please [open an issue](https://github.com/KosukeShimizu/svgflex/issues).

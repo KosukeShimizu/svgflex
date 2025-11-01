@@ -3,6 +3,7 @@
   [style.color]="processedColor"
   [attr.aria-label]="ariaLabel"
   [attr.role]="ariaLabel ? 'img' : null"
+  [attr.title]="ariaLabel"
 >
   @if (inline && svgContent) {
     <div [innerHTML]="svgContent" class="svgflex-inline"></div>
@@ -10,6 +11,7 @@
     <img
       [src]="src"
       [alt]="ariaLabel || ''"
+      [title]="ariaLabel"
       [style.width]="width"
       [style.height]="height"
     />

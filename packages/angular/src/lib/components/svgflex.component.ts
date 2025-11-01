@@ -47,6 +47,9 @@ export class SvgflexComponent implements OnChanges {
   /** Accessibility label */
   @Input() ariaLabel?: string;
 
+  /** Alternative text / Accessibility label (alias for ariaLabel) */
+  @Input() alt?: string;
+
   /** Whether to inline the SVG (default: true) */
   @Input() inline: boolean = true;
 
@@ -79,7 +82,7 @@ export class SvgflexComponent implements OnChanges {
       color: this.color,
       size: this.size,
       class: this.class,
-      ariaLabel: this.ariaLabel,
+      ariaLabel: this.ariaLabel || this.alt,
       inline: this.inline
     };
 

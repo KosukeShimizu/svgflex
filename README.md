@@ -1,7 +1,7 @@
 # SVGFlex
 
 [![CI](https://github.com/KosukeShimizu/svgflex/actions/workflows/ci.yml/badge.svg)](https://github.com/KosukeShimizu/svgflex/actions/workflows/ci.yml)
-[![npm version](https://badge.fury.io/js/@svgflex%2Fangular.svg)](https://www.npmjs.com/package/@svgflex/angular)
+[![npm version](https://img.shields.io/npm/v/@svgflex/angular)](https://www.npmjs.com/package/@svgflex/angular)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A powerful library for SVG icons with easy color and size customization, built with extensibility in mind.

@@ -22,8 +22,8 @@ describe('SvgflexComponent', () => {
   });
 
   it('should use default size when not provided', () => {
-    expect(component.width).toBe('24px');
-    expect(component.height).toBe('24px');
+    expect(component['width']).toBe('24px');
+    expect(component['height']).toBe('24px');
   });
 
   it('should process number size to px', () => {
@@ -36,8 +36,8 @@ describe('SvgflexComponent', () => {
         isFirstChange: () => true
       }
     });
-    expect(component.width).toBe('32px');
-    expect(component.height).toBe('32px');
+    expect(component['width']).toBe('32px');
+    expect(component['height']).toBe('32px');
   });
 
   it('should process string size', () => {
@@ -50,13 +50,13 @@ describe('SvgflexComponent', () => {
         isFirstChange: () => true
       }
     });
-    expect(component.width).toBe('2rem');
-    expect(component.height).toBe('2rem');
+    expect(component['width']).toBe('2rem');
+    expect(component['height']).toBe('2rem');
   });
 
   it('should use currentColor as default color', () => {
     component.ngOnChanges({});
-    expect(component.color).toBe('currentColor');
+    expect(component['processedColor']).toBe('currentColor');
   });
 
   it('should apply custom color', () => {
@@ -69,6 +69,6 @@ describe('SvgflexComponent', () => {
         isFirstChange: () => true
       }
     });
-    expect(component.color).toBe('#ff0000');
+    expect(component['processedColor']).toBe('#ff0000');
   });
 });

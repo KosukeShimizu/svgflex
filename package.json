@@ -12,7 +12,7 @@
     "build:all": "npm run build && npm run build:demo",
     "watch": "ng build angular --watch",
     "watch:core": "cd packages/core && npm run watch",
-    "test": "ng test angular",
+    "test": "ng test angular --watch=false --browsers=ChromeHeadless",
     "prepublish": "npm run build"
   },
   "private": true,

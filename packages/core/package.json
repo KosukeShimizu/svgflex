@@ -1,0 +1,42 @@
+{
+  "name": "@svgflex/core",
+  "version": "0.0.1",
+  "description": "Framework-agnostic core utilities for SVGFlex",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "svg",
+    "icons",
+    "framework-agnostic",
+    "utilities",
+    "customizable"
+  ],
+  "author": "Kosuke Shimizu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KosukeShimizu/svgflex.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/KosukeShimizu/svgflex#readme",
+  "bugs": {
+    "url": "https://github.com/KosukeShimizu/svgflex/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "devDependencies": {
+    "typescript": "~5.8.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@svgflex/angular",
+  "version": "0.0.1",
+  "description": "Angular library for SVG icons with easy color and size customization",
+  "keywords": [
+    "svg",
+    "icons",
+    "angular",
+    "currentColor",
+    "customizable",
+    "standalone",
+    "component"
+  ],
+  "author": "Kosuke Shimizu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KosukeShimizu/svgflex.git",
+    "directory": "packages/angular"
+  },
+  "homepage": "https://github.com/KosukeShimizu/svgflex#readme",
+  "bugs": {
+    "url": "https://github.com/KosukeShimizu/svgflex/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@svgflex/core": "^0.0.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

@@ -22,6 +22,19 @@ export function replaceColorsWithCurrentColor(svgContent: string): string {
     'stroke="currentColor"'
   );
 
+  // Add fill="none" to path elements that have stroke but no fill attribute
+  // This prevents unwanted default fills on stroke-only paths
+  result = result.replace(
+    /<path\s+([^>]*?\bstroke\s*=\s*["'][^"']*["'][^>]*?)(?!\s*fill\s*=)(\s*\/?>)/gi,
+    (match, attributes, closing) => {
+      // Check if 'fill' attribute already exists anywhere in the attributes
+      if (!/\bfill\s*=/i.test(attributes)) {
+        return `<path ${attributes} fill="none"${closing}`;
+      }
+      return match;
+    }
+  );
+
   return result;
 }
 

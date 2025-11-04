@@ -4,7 +4,8 @@ import {
   OnChanges,
   SimpleChanges,
   HostBinding,
-  inject
+  inject,
+  ChangeDetectorRef
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,7 @@ import { processSvgConfig, SvgFlexConfig, SvgSize, SvgColor } from '@svgflex/cor
  *
  * Renders SVG icons with customizable color and size.
  * Supports both inline SVG (for full style control) and external references.
+ * Compatible with both Zone.js and Zoneless Angular applications.
  *
  * @example
  * <svgflex src="assets/icons/home.svg" color="red" size="32"></svgflex>
@@ -31,6 +33,7 @@ import { processSvgConfig, SvgFlexConfig, SvgSize, SvgColor } from '@svgflex/cor
 export class SvgflexComponent implements OnChanges {
   private svgLoader = inject(SvgLoaderService);
   private sanitizer = inject(DomSanitizer);
+  private cdr = inject(ChangeDetectorRef);
 
   /** Path or URL to the SVG file */
   @Input({ required: true }) src!: string;
@@ -132,6 +135,8 @@ export class SvgflexComponent implements OnChanges {
       } else {
         console.log('[SvgflexComponent] Received empty content');
       }
+      // Manually trigger change detection for Zoneless compatibility
+      this.cdr.markForCheck();
     });
   }
 }

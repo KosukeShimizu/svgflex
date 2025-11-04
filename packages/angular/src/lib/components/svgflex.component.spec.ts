@@ -54,9 +54,9 @@ describe('SvgflexComponent', () => {
     expect(component['height']).toBe('2rem');
   });
 
-  it('should use currentColor as default color', () => {
+  it('should have undefined color by default', () => {
     component.ngOnChanges({});
-    expect(component['processedColor']).toBe('currentColor');
+    expect(component.color).toBeUndefined();
   });
 
   it('should apply custom color', () => {
@@ -69,6 +69,6 @@ describe('SvgflexComponent', () => {
         isFirstChange: () => true
       }
     });
-    expect(component['processedColor']).toBe('#ff0000');
+    expect(component.color).toBe('#ff0000');
   });
 });

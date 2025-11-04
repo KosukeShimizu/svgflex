@@ -34,7 +34,14 @@
     fill: currentColor;
 
     // Ensure paths and other elements inherit the fill
-    path, circle, rect, polygon, polyline, ellipse, line {
+    // But respect fill="none" and fill="transparent" attributes
+    path:not([fill="none"]):not([fill="transparent"]),
+    circle:not([fill="none"]):not([fill="transparent"]),
+    rect:not([fill="none"]):not([fill="transparent"]),
+    polygon:not([fill="none"]):not([fill="transparent"]),
+    polyline:not([fill="none"]):not([fill="transparent"]),
+    ellipse:not([fill="none"]):not([fill="transparent"]),
+    line:not([fill="none"]):not([fill="transparent"]) {
       fill: currentColor;
     }
 

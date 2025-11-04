@@ -52,6 +52,13 @@ export interface SvgFlexConfig {
    * When true, fetches and embeds the SVG content for full style control
    */
   inline?: boolean;
+
+  /**
+   * Whether to replace hardcoded colors with currentColor (default: true)
+   * When true, automatically replaces fill and stroke attributes with currentColor
+   * to allow the 'color' property to work even with SVGs that have hardcoded colors
+   */
+  replaceColors?: boolean;
 }
 
 /**
@@ -65,4 +72,5 @@ export interface ProcessedSvgConfig {
   class: string;
   ariaLabel?: string;
   inline: boolean;
+  replaceColors: boolean;
 }

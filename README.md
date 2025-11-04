@@ -9,6 +9,7 @@ A powerful library for SVG icons with easy color and size customization, built w
 ## 🎯 Features
 
 - **Easy customization**: Change SVG colors and sizes with simple props
+- **Automatic color replacement**: Automatically converts hardcoded SVG colors to `currentColor` for dynamic styling
 - **currentColor support**: Seamlessly integrate with your design system using CSS color inheritance
 - **Flexible sizing**: Support for px, rem, em, %, vw, vh, and custom width/height
 - **TypeScript**: Fully typed for excellent developer experience
@@ -85,6 +86,23 @@ export class AppComponent {}
   [size]="{width: '100px', height: '50px'}"
 ></svgflex>
 ```
+
+### Hardcoded Color Support
+
+By default, SVGFlex automatically replaces hardcoded colors in SVG files (like `fill="#4E7079"`) with `currentColor`, allowing you to control the color dynamically via the `color` prop or CSS.
+
+```html
+<!-- Even if your SVG has fill="#FF0000", this will render in blue -->
+<svgflex src="assets/icons/heart.svg" color="blue"></svgflex>
+
+<!-- Disable automatic color replacement if needed -->
+<svgflex
+  src="assets/icons/logo.svg"
+  [replaceColors]="false"
+></svgflex>
+```
+
+This feature is especially useful when working with third-party SVG files that have hardcoded colors, eliminating the need to manually edit SVG files.
 
 ### SCSS Integration
 

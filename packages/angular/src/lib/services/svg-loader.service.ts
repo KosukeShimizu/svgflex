@@ -11,25 +11,33 @@ import { sanitizeSvg } from '@svgflex/core';
   providedIn: 'root'
 })
 export class SvgLoaderService {
-  private cache = new Map<string, Observable<string>>();
+  private cache = new Map<string, Map<boolean, Observable<string>>>();
 
   constructor(private http: HttpClient) {}
 
   /**
    * Loads SVG content from a URL with caching
+   * @param url - URL to load the SVG from
+   * @param replaceColors - Whether to replace hardcoded colors with currentColor (default: true)
    */
-  loadSvg(url: string): Observable<string> {
-    console.log('[SvgLoaderService] Loading SVG from:', url);
+  loadSvg(url: string, replaceColors: boolean = true): Observable<string> {
+    console.log('[SvgLoaderService] Loading SVG from:', url, 'replaceColors:', replaceColors);
 
-    if (this.cache.has(url)) {
-      console.log('[SvgLoaderService] Returning cached SVG for:', url);
-      return this.cache.get(url)!;
+    // Check cache with both url and replaceColors as key
+    if (!this.cache.has(url)) {
+      this.cache.set(url, new Map());
+    }
+
+    const urlCache = this.cache.get(url)!;
+    if (urlCache.has(replaceColors)) {
+      console.log('[SvgLoaderService] Returning cached SVG for:', url, 'replaceColors:', replaceColors);
+      return urlCache.get(replaceColors)!;
     }
 
     const svg$ = this.http.get(url, { responseType: 'text' }).pipe(
       map(svgContent => {
         console.log('[SvgLoaderService] Successfully loaded SVG from:', url, 'Length:', svgContent.length);
-        return sanitizeSvg(svgContent);
+        return sanitizeSvg(svgContent, replaceColors);
       }),
       catchError(error => {
         console.error(`[SvgLoaderService] Failed to load SVG from ${url}:`, error);
@@ -38,7 +46,7 @@ export class SvgLoaderService {
       shareReplay(1)
     );
 
-    this.cache.set(url, svg$);
+    urlCache.set(replaceColors, svg$);
     return svg$;
   }
 

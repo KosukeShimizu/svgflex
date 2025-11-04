@@ -53,10 +53,14 @@ export class SvgflexComponent implements OnChanges {
   /** Whether to inline the SVG (default: true) */
   @Input() inline: boolean = true;
 
+  /** Whether to replace hardcoded colors with currentColor (default: true) */
+  @Input() replaceColors: boolean = true;
+
   // Processed values
   protected width: string = '24px';
   protected height: string = '24px';
   protected processedColor: string = 'currentColor';
+  protected processedReplaceColors: boolean = true;
   protected svgContent: any = null;
 
   // Apply CSS classes to :host element
@@ -83,7 +87,8 @@ export class SvgflexComponent implements OnChanges {
       size: this.size,
       class: this.class,
       ariaLabel: this.ariaLabel || this.alt,
-      inline: this.inline
+      inline: this.inline,
+      replaceColors: this.replaceColors
     };
 
     const processed = processSvgConfig(config);
@@ -91,31 +96,33 @@ export class SvgflexComponent implements OnChanges {
     this.width = processed.width;
     this.height = processed.height;
     this.processedColor = processed.color;
+    this.processedReplaceColors = processed.replaceColors;
     this.ariaLabel = processed.ariaLabel;
 
     console.log('[SvgflexComponent] Processed config:', {
       width: this.width,
       height: this.height,
       color: this.processedColor,
+      replaceColors: this.processedReplaceColors,
       src: this.src
     });
 
     // Load SVG content if inline mode is enabled
     // Check if src or inline changed, or if it's the first change (firstChange)
-    if (this.inline && (changes['src'] || changes['inline'] || Object.keys(changes).length > 0)) {
+    if (this.inline && (changes['src'] || changes['inline'] || changes['replaceColors'] || Object.keys(changes).length > 0)) {
       this.loadSvgContent();
     }
   }
 
   private loadSvgContent(): void {
-    console.log('[SvgflexComponent] loadSvgContent called, src:', this.src, 'inline:', this.inline);
+    console.log('[SvgflexComponent] loadSvgContent called, src:', this.src, 'inline:', this.inline, 'replaceColors:', this.processedReplaceColors);
 
     if (!this.src) {
       console.log('[SvgflexComponent] No src provided, skipping load');
       return;
     }
 
-    this.svgLoader.loadSvg(this.src).subscribe((content: string) => {
+    this.svgLoader.loadSvg(this.src, this.processedReplaceColors).subscribe((content: string) => {
       console.log('[SvgflexComponent] Received SVG content, length:', content.length);
       if (content) {
         // SVG is already sanitized by SvgLoaderService

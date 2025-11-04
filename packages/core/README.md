@@ -10,6 +10,7 @@ This package is intended to be used by framework-specific implementations (e.g.,
 
 - Framework-agnostic type definitions
 - SVG sanitization utilities (removes scripts and event handlers)
+- Automatic color replacement for hardcoded SVG colors
 - Configuration processors for size and color handling
 - Shared utilities for SVG manipulation
 
@@ -54,15 +55,43 @@ Processes SVG configuration and returns normalized size and color values.
 }
 ```
 
-### `sanitizeSvg(svgContent: string): string`
+### `sanitizeSvg(svgContent: string, replaceColors?: boolean): string`
 
-Sanitizes SVG content by removing potentially dangerous elements and attributes.
+Sanitizes SVG content by removing potentially dangerous elements and attributes. Optionally replaces hardcoded colors with `currentColor` to enable dynamic color control.
 
 **Parameters:**
 - `svgContent` - Raw SVG string
+- `replaceColors` - Whether to replace hardcoded colors with `currentColor` (default: `false`)
 
 **Returns:**
-- Sanitized SVG string with scripts and event handlers removed
+- Sanitized SVG string with scripts and event handlers removed, and optionally with colors replaced
+
+**Example:**
+```typescript
+// Basic sanitization
+const safeSvg = sanitizeSvg(rawSvgContent);
+
+// Sanitization with color replacement
+const safeSvgWithColors = sanitizeSvg(rawSvgContent, true);
+// This will convert fill="#4E7079" to fill="currentColor"
+```
+
+### `replaceColorsWithCurrentColor(svgContent: string): string`
+
+Replaces all hardcoded colors in SVG attributes (`fill` and `stroke`) with `currentColor`, while preserving `none`, `transparent`, `currentColor`, and `url()` references.
+
+**Parameters:**
+- `svgContent` - SVG string with hardcoded colors
+
+**Returns:**
+- SVG string with colors replaced by `currentColor`
+
+**Example:**
+```typescript
+const svgWithHardcodedColor = '<svg><path fill="#FF0000" stroke="blue" /></svg>';
+const svgWithCurrentColor = replaceColorsWithCurrentColor(svgWithHardcodedColor);
+// Result: '<svg><path fill="currentColor" stroke="currentColor" /></svg>'
+```
 
 ## Usage in Framework Implementations
 

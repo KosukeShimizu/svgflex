@@ -7,7 +7,8 @@ const DEFAULT_CONFIG = {
   color: 'currentColor',
   size: 24,
   inline: true,
-  class: ''
+  class: '',
+  replaceColors: true
 };
 
 /**
@@ -51,6 +52,7 @@ export function processSvgConfig(config: SvgFlexConfig): ProcessedSvgConfig {
     height,
     class: config.class || DEFAULT_CONFIG.class,
     ariaLabel: config.ariaLabel,
-    inline: config.inline !== undefined ? config.inline : DEFAULT_CONFIG.inline
+    inline: config.inline !== undefined ? config.inline : DEFAULT_CONFIG.inline,
+    replaceColors: config.replaceColors !== undefined ? config.replaceColors : DEFAULT_CONFIG.replaceColors
   };
 }

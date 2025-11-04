@@ -62,7 +62,6 @@ export class SvgflexComponent implements OnChanges {
   // Processed values
   protected width: string = '24px';
   protected height: string = '24px';
-  protected processedColor: string = 'currentColor';
   protected processedReplaceColors: boolean = true;
   protected svgContent: any = null;
 
@@ -98,14 +97,13 @@ export class SvgflexComponent implements OnChanges {
 
     this.width = processed.width;
     this.height = processed.height;
-    this.processedColor = processed.color;
     this.processedReplaceColors = processed.replaceColors;
     this.ariaLabel = processed.ariaLabel;
 
     console.log('[SvgflexComponent] Processed config:', {
       width: this.width,
       height: this.height,
-      color: this.processedColor,
+      color: this.color,
       replaceColors: this.processedReplaceColors,
       src: this.src
     });

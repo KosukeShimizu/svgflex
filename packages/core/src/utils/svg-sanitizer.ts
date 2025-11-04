@@ -9,17 +9,17 @@ export function replaceColorsWithCurrentColor(svgContent: string): string {
   let result = svgContent;
 
   // Replace fill attributes with hex colors, rgb, rgba, named colors, etc.
-  // But preserve fill="none" and fill="transparent"
+  // But preserve fill="none", fill="transparent", fill="currentColor", and fill="url(...)"
   result = result.replace(
-    /fill\s*=\s*["'](?!none["']|transparent["']|currentColor["']|url\()/gi,
-    'fill="currentColor'
+    /fill\s*=\s*["'](?!none["']|transparent["']|currentColor["']|url\()[^"']*["']/gi,
+    'fill="currentColor"'
   );
 
   // Replace stroke attributes with hex colors, rgb, rgba, named colors, etc.
-  // But preserve stroke="none" and stroke="transparent"
+  // But preserve stroke="none", stroke="transparent", stroke="currentColor", and stroke="url(...)"
   result = result.replace(
-    /stroke\s*=\s*["'](?!none["']|transparent["']|currentColor["']|url\()/gi,
-    'stroke="currentColor'
+    /stroke\s*=\s*["'](?!none["']|transparent["']|currentColor["']|url\()[^"']*["']/gi,
+    'stroke="currentColor"'
   );
 
   return result;

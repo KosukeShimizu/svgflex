@@ -1,6 +1,6 @@
 {
   "name": "@svgflex/core",
-  "version": "0.0.0-dev",
+  "version": "0.2.0",
   "description": "Framework-agnostic core utilities for SVGFlex",
   "main": "index.js",
   "module": "index.js",

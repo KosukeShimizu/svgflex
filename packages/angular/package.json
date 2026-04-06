@@ -1,6 +1,6 @@
 {
   "name": "@svgflex/angular",
-  "version": "0.0.0-dev",
+  "version": "0.2.0",
   "description": "Angular library for SVG icons with easy color and size customization",
   "keywords": [
     "svg",

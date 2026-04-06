@@ -69,15 +69,11 @@ jobs:
         if: github.event.inputs.package == 'all' || github.event.inputs.package == 'core' || github.ref_type == 'tag'
         working-directory: ./packages/core/dist
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @svgflex/angular
         if: github.event.inputs.package == 'all' || github.event.inputs.package == 'angular' || github.ref_type == 'tag'
         working-directory: ./dist/angular
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         if: github.ref_type == 'tag'

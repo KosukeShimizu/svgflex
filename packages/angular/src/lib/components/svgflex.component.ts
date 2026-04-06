@@ -5,10 +5,11 @@ import {
   SimpleChanges,
   HostBinding,
   inject,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  isDevMode
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+
 import { SvgLoaderService } from '../services/svg-loader.service';
 import { processSvgConfig, SvgFlexConfig, SvgSize, SvgColor } from '@svgflex/core';
 
@@ -26,7 +27,7 @@ import { processSvgConfig, SvgFlexConfig, SvgSize, SvgColor } from '@svgflex/cor
 @Component({
   selector: 'svgflex',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './svgflex.component.html',
   styleUrl: './svgflex.component.scss'
 })
@@ -100,13 +101,15 @@ export class SvgflexComponent implements OnChanges {
     this.processedReplaceColors = processed.replaceColors;
     this.ariaLabel = processed.ariaLabel;
 
-    console.log('[SvgflexComponent] Processed config:', {
-      width: this.width,
-      height: this.height,
-      color: this.color,
-      replaceColors: this.processedReplaceColors,
-      src: this.src
-    });
+    if (isDevMode()) {
+      console.log('[SvgflexComponent] Processed config:', {
+        width: this.width,
+        height: this.height,
+        color: this.color,
+        replaceColors: this.processedReplaceColors,
+        src: this.src
+      });
+    }
 
     // Load SVG content if inline mode is enabled
     // Check if src or inline changed, or if it's the first change (firstChange)
@@ -116,22 +119,32 @@ export class SvgflexComponent implements OnChanges {
   }
 
   private loadSvgContent(): void {
-    console.log('[SvgflexComponent] loadSvgContent called, src:', this.src, 'inline:', this.inline, 'replaceColors:', this.processedReplaceColors);
+    if (isDevMode()) {
+      console.log('[SvgflexComponent] loadSvgContent called, src:', this.src, 'inline:', this.inline, 'replaceColors:', this.processedReplaceColors);
+    }
 
     if (!this.src) {
-      console.log('[SvgflexComponent] No src provided, skipping load');
+      if (isDevMode()) {
+        console.log('[SvgflexComponent] No src provided, skipping load');
+      }
       return;
     }
 
     this.svgLoader.loadSvg(this.src, this.processedReplaceColors).subscribe((content: string) => {
-      console.log('[SvgflexComponent] Received SVG content, length:', content.length);
+      if (isDevMode()) {
+        console.log('[SvgflexComponent] Received SVG content, length:', content.length);
+      }
       if (content) {
         // SVG is already sanitized by SvgLoaderService
         // Directly bypass security and trust the HTML
         this.svgContent = this.sanitizer.bypassSecurityTrustHtml(content);
-        console.log('[SvgflexComponent] SVG content set successfully');
+        if (isDevMode()) {
+          console.log('[SvgflexComponent] SVG content set successfully');
+        }
       } else {
-        console.log('[SvgflexComponent] Received empty content');
+        if (isDevMode()) {
+          console.log('[SvgflexComponent] Received empty content');
+        }
       }
       // Manually trigger change detection for Zoneless compatibility
       this.cdr.markForCheck();

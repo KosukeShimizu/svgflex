@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, shareReplay } from 'rxjs/operators';
@@ -21,7 +21,9 @@ export class SvgLoaderService {
    * @param replaceColors - Whether to replace hardcoded colors with currentColor (default: true)
    */
   loadSvg(url: string, replaceColors: boolean = true): Observable<string> {
-    console.log('[SvgLoaderService] Loading SVG from:', url, 'replaceColors:', replaceColors);
+    if (isDevMode()) {
+      console.log('[SvgLoaderService] Loading SVG from:', url, 'replaceColors:', replaceColors);
+    }
 
     // Check cache with both url and replaceColors as key
     if (!this.cache.has(url)) {
@@ -30,13 +32,17 @@ export class SvgLoaderService {
 
     const urlCache = this.cache.get(url)!;
     if (urlCache.has(replaceColors)) {
-      console.log('[SvgLoaderService] Returning cached SVG for:', url, 'replaceColors:', replaceColors);
+      if (isDevMode()) {
+        console.log('[SvgLoaderService] Returning cached SVG for:', url, 'replaceColors:', replaceColors);
+      }
       return urlCache.get(replaceColors)!;
     }
 
     const svg$ = this.http.get(url, { responseType: 'text' }).pipe(
       map(svgContent => {
-        console.log('[SvgLoaderService] Successfully loaded SVG from:', url, 'Length:', svgContent.length);
+        if (isDevMode()) {
+          console.log('[SvgLoaderService] Successfully loaded SVG from:', url, 'Length:', svgContent.length);
+        }
         return sanitizeSvg(svgContent, replaceColors);
       }),
       catchError(error => {

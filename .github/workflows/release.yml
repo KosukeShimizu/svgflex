@@ -65,15 +65,27 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Generate npm token via OIDC
+        id: npm-token
+        run: |
+          OIDC_TOKEN=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://registry.npmjs.org" | jq -r '.value')
+          echo "::add-mask::$OIDC_TOKEN"
+          echo "token=$OIDC_TOKEN" >> $GITHUB_OUTPUT
+
       - name: Publish @svgflex/core
         if: github.event.inputs.package == 'all' || github.event.inputs.package == 'core' || github.ref_type == 'tag'
         working-directory: ./packages/core/dist
         run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ steps.npm-token.outputs.token }}
 
       - name: Publish @svgflex/angular
         if: github.event.inputs.package == 'all' || github.event.inputs.package == 'angular' || github.ref_type == 'tag'
         working-directory: ./dist/angular
         run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ steps.npm-token.outputs.token }}
 
       - name: Create GitHub Release
         if: github.ref_type == 'tag'
